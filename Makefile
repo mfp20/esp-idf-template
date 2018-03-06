@@ -13,22 +13,32 @@ SDKUPY := $(SDK)-2c95a77
 
 configure:
 
-subs:
-	@git submodule update --init --recursive
-
-fetch: subs
-	# libquickmail
-	#cd tools
-	#wget "https://downloads.sourceforge.net/project/libquickmail/libquickmail-0.1.25.tar.xz" -C tools/misc
-	# zlib
-	#wget "https://www.zlib.net/zlib-1.2.11.tar.gz" -C tools/misc
-	@echo "Misc sources fetched."
-
-buildchain:
-ifeq (,$(wildcard tools/xtensa-esp32-elf))
+fetch:
 ifeq (,$(wildcard tools/misc/$(BUILDCHAIN)))
 	@wget https://dl.espressif.com/dl/$(BUILDCHAIN) -O tools/misc/$(BUILDCHAIN)
 endif
+ifeq (,$(wildcard tools/esp-idf))
+	git submodule add -f https://github.com/mfp20/esp-idf.git tools/esp-idf
+endif
+ifeq (,$(wildcard tools/mkspiffs))
+	git submodule add -f https://github.com/mfp20/mkspiffs.git tools/mkspiffs
+endif
+ifeq (,$(wildcard main/arduino-esp32))
+	git submodule add -f https://github.com/mfp20/arduino-esp32.git components/arduino-esp32
+endif
+ifeq (,$(wildcard main/micropython))
+	git submodule add -f https://github.com/mfp20/micropython.git components/micropython
+endif
+# libquickmail
+#cd tools
+#wget "https://downloads.sourceforge.net/project/libquickmail/libquickmail-0.1.25.tar.xz" -C tools/misc
+# zlib
+#wget "https://www.zlib.net/zlib-1.2.11.tar.gz" -C tools/misc
+	@git submodule update --init --recursive
+	@echo "Sources fetched."
+
+buildchain:
+ifeq (,$(wildcard tools/xtensa-esp32-elf))
 	@tar -zxf tools/misc/$(BUILDCHAIN) -C tools/
 endif
 ifneq (,$(wildcard tools/paths))
