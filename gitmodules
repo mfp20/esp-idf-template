@@ -1,0 +1,31 @@
+[submodule "tools/esp-idf"]
+	path = tools/esp-idf
+	url = https://github.com/mfp20/esp-idf.git
+[submodule "docs/awesome-c"]
+	path = docs/awesome-c
+	url = https://notabug.org/koz.ross/awesome-c.git
+[submodule "tools/mkspiffs"]
+	path = tools/mkspiffs
+	url = https://github.com/mfp20/mkspiffs.git
+[submodule "tools/micropython"]
+	path = tools/micropython
+	url = https://github.com/mfp20/micropython.git
+	branch = esp32-template-plus
+[submodule "components/curl/sources"]
+	path = components/curl/sources
+	url = https://github.com/mfp20/curl.git
+[submodule "components/libssh2/sources"]
+	path = components/libssh2/sources
+	url = https://github.com/mfp20/libssh2.git
+[submodule "components/zlib/sources"]
+	path = components/zlib/sources
+	url = https://github.com/mfp20/zlib.git
+[submodule "components/espmqtt/sources"]
+	path = components/espmqtt/sources
+	url = https://github.com/mfp20/espmqtt.git
+[submodule "components/ota-server/sources"]
+	path = components/ota-server/sources
+	url = https://github.com/mfp20/esp32-ota-server.git
+[submodule "components/templateplus/arduino-esp32"]
+	path = components/templateplus/arduino-esp32
+	url = https://github.com/mfp20/arduino-esp32.git
